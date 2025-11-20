@@ -8,8 +8,6 @@ compatibilityDate: '2025-07-15',
   
   // Hybrid Rendering Route Rules Configuration
   routeRules: {
-    // Home page - Static Site Generation (SSG)
-    '/': { prerender: true },
     // SSG example page - Static Generation
     '/ssg': { prerender: true },
     // ISR example page - Incremental Static Regeneration
