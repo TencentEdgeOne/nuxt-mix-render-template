@@ -24,6 +24,15 @@
     <!-- Real-time Data Dashboard -->
     <section class="dashboard section">
       <div class="container">
+        <div class="page-generation-time">
+          <span class="badge badge-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Page Generated At: {{ ssrData?.serverTime || 'Unknown' }}
+          </span>
+        </div>
         <div class="dashboard-header">
           <h2>📊 Server-Side Rendered Dashboard</h2>
           <div class="server-info">
@@ -309,6 +318,23 @@ const getResponseTrendClass = (time: number) => {
   max-width: 600px;
   margin: 0 auto;
   color: var(--color-text-secondary);
+}
+
+/* Page Generation Time */
+.page-generation-time {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.page-generation-time .badge {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1D4ED8;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 }
 
 /* Dashboard */

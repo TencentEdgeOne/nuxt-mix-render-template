@@ -35,8 +35,8 @@ export default defineEventHandler(async (event) => {
   // Return dynamic data
   return {
     timestamp: now.toISOString(),
-    serverTime: now.toLocaleString('en-US', { 
-      timeZone: 'UTC',
+    serverTime: now.toLocaleString('zh-CN', { 
+      timeZone: 'Asia/Shanghai',
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',

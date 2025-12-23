@@ -15,6 +15,15 @@
             Combine static generation with dynamic updates, maintaining high performance while ensuring content freshness.
             This page data was last updated at {{ formatTime(contentData?.metadata?.lastUpdated) }}.
           </p>
+          <p class="cache-info">
+            <span class="badge badge-warning">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23 12C23 18.075 18.075 23 12 23S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 7V13L16 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Cache refreshes every 5 seconds
+            </span>
+          </p>
         </div>
       </div>
     </section>
@@ -169,19 +178,18 @@ useHead({
 
 // Get ISR content data
 const { data: contentData } = await useAsyncData('isr-content', () => $fetch('/api/isr-content'))
-console.log('ISR Content Data:', contentData)
 
 // Format time
 const formatTime = (dateString: string) => {
   if (!dateString) return 'unknown'
-  return new Date(dateString).toLocaleString('en-US', {
+  return new Date(dateString).toLocaleString('zh-CN', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    timeZone: 'UTC' 
+    timeZone: 'Asia/Shanghai' 
   })
 }
 
@@ -239,6 +247,21 @@ const getCacheStatusClass = (status: string) => {
   max-width: 600px;
   margin: 0 auto;
   color: var(--color-text-secondary);
+}
+
+.cache-info {
+  margin-top: var(--spacing-md);
+  text-align: center;
+}
+
+.cache-info .badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #D97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
 }
 
 /* Live Content */
